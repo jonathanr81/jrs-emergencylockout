@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JR's Emergency Lockout Services | Monroe, MI | 24/7</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #cc0000;
+    --red-dark: #990000;
+    --red-light: #ff1a1a;
+    --black: #0a0a0a;
+    --dark: #141414;
+    --gray: #1e1e1e;
+    --light-gray: #2a2a2a;
+    --text: #f0f0f0;
+    --muted: #999;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--black);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    border-bottom: 2px solid var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--red);
+    letter-spacing: 2px;
+  }
+
+  .nav-phone a {
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+  }
+
+  .nav-phone a:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 60px,
+      rgba(204,0,0,0.03) 60px,
+      rgba(204,0,0,0.03) 61px
+    );
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    color: #fff;
+    animation: fadeDown 0.6s 0.1s ease both;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero h1 span { color: var(--red); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--muted);
+    margin: 1.2rem 0 2.5rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    animation: fadeDown 0.6s 0.2s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeDown 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border-radius: 4px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border: 2px solid var(--red);
+  }
+
+  .btn-primary:hover {
+    background: var(--red-dark);
+    border-color: var(--red-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  /* URGENCY BAR */
+  .urgency-bar {
+    background: var(--red);
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .urgency-bar a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  /* SERVICES */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 3px;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 3rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--dark);
+    border: 1px solid var(--gray);
+    border-top: 3px solid var(--red);
+    padding: 2rem 1.5rem;
+    border-radius: 4px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--red-light);
+  }
+
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .service-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* WHY US */
+  .why-section {
+    background: var(--dark);
+    padding: 5rem 2rem;
+  }
+
+  .why-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .why-item {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .why-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .why-item h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .why-item p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* AREA */
+  .area-section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .area-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .area-tag {
+    background: var(--dark);
+    border: 1px solid var(--light-gray);
+    color: var(--text);
+    padding: 0.5rem 1.2rem;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--red);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    letter-spacing: 4px;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-section p {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+  }
+
+  .cta-phone {
+    display: inline-block;
+    background: #fff;
+    color: var(--red);
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    letter-spacing: 4px;
+    padding: 0.8rem 3rem;
+    border-radius: 4px;
+    transition: transform 0.2s;
+  }
+
+  .cta-phone:hover { transform: scale(1.04); }
+
+  /* FOOTER */
+  footer {
+    background: #050505;
+    border-top: 2px solid var(--gray);
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  footer strong { color: var(--red); }
+
+  /* ANIMATIONS */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    nav { padding: 0.75rem 1rem; }
+    .nav-logo { font-size: 1.2rem; }
+    .hero { padding: 5rem 1.5rem 3rem; }
+    .section { padding: 3.5rem 1.5rem; }
+    .cta-section { padding: 3.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">JR's Lockout</div>
+  <div class="nav-phone"><a href="tel:7344103490">📞 (734) 410-3490</a></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">⚡ Available 24 Hours a Day, 7 Days a Week</div>
+    <h1>JR's<br><span>Emergency</span><br>Lockout</h1>
+    <p class="hero-sub">Monroe, MI & Surrounding Areas · Fast Response · Cars & Homes</p>
+    <div class="hero-btns">
+      <a href="tel:7344103490" class="btn-primary">📞 Call Now: (734) 410-3490</a>
+      <a href="#services" class="btn-outline">See Our Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">▼ scroll</div>
+</section>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  <a href="tel:7344103490">🔑 Locked Out? Don't Wait — Call (734) 410-3490 Right Now</a>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+  <div class="section-label">What We Do</div>
+  <div class="section-title">Our Services</div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">🚗</div>
+      <h3>Car Lockouts</h3>
+      <p>Locked your keys inside your vehicle? We'll get you back on the road fast — any make or model.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>Home Lockouts</h3>
+      <p>Locked out of your house? We provide quick, damage-free entry to get you home safely.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Business Lockouts</h3>
+      <p>Can't get into your office or shop? We handle commercial lockouts with no hassle.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🌙</div>
+      <h3>After-Hours Emergency</h3>
+      <p>Middle of the night? Holiday? Weekend? It doesn't matter — we answer when others don't.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="why-section">
+  <div class="why-inner">
+    <div class="section-label">Why Choose Us</div>
+    <div class="section-title">Built on Trust & Speed</div>
+    <div class="why-grid">
+
+      <div class="why-item">
+        <div class="why-number">24/7</div>
+        <h4>Always Available</h4>
+        <p>Day or night, we pick up the phone. No voicemail, no wait list.</p>
+      </div>
+
+      <div class="why-item">
+        <div class="why-number">Fast</div>
+        <h4>Quick Response</h4>
+        <p>We move fast because we know being locked out isn't something you can wait on.</p>
+      </div>
+
+      <div class="why-item">
+        <div class="why-number">Local</div>
+        <h4>Monroe Based</h4>
+        <p>We live and work here. We know the area and get to you faster.</p>
+      </div>
+
+      <div class="why-item">
+        <div class="why-number">Fair</div>
+        <h4>Honest Pricing</h4>
+        <p>No surprise fees. You'll know the price before we start — always.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE AREA -->
+<div class="area-section">
+  <div class="section-label">Where We Serve</div>
+  <div class="section-title">Service Area</div>
+  <p style="color: var(--muted); max-width: 600px; line-height: 1.7;">We proudly serve Monroe and all surrounding communities. If you're nearby, we can help.</p>
+  <div class="area-tags">
+    <span class="area-tag">Monroe</span>
+    <span class="area-tag">Frenchtown Twp</span>
+    <span class="area-tag">Bedford Twp</span>
+    <span class="area-tag">Dundee</span>
+    <span class="area-tag">Milan</span>
+    <span class="area-tag">Flat Rock</span>
+    <span class="area-tag">Gibraltar</span>
+    <span class="area-tag">Rockwood</span>
+    <span class="area-tag">Carleton</span>
+    <span class="area-tag">Luna Pier</span>
+    <span class="area-tag">LaSalle</span>
+    <span class="area-tag">Temperance</span>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Locked Out Right Now?</h2>
+  <p>Don't sit there stuck. One call and we're on our way.</p>
+  <a href="tel:7344103490" class="cta-phone">(734) 410-3490</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>JR's Emergency Lockout Services</strong> · Monroe, MI & Surrounding Areas · Available 24/7</p>
+  <p style="margin-top: 0.5rem;">Call anytime: <a href="tel:7344103490" style="color: var(--red); text-decoration: none;">(734) 410-3490</a></p>
+</footer>
+
+</body>
+</html>
